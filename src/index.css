@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-app: #f8fafc;
+  --text-app: #0f172a;
+  --text-muted: #64748b;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-border-subtle: #f1f5f9;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-border: #e2e8f0;
+  --neon-blue: #2563eb;
+  --neon-cyan: #0ea5e9;
+  --cyber-grid-opacity: 0.05;
+}
+
+.dark {
+  --bg-app: #070d14;
+  --text-app: #f1f5f9;
+  --text-muted: #94a3b8;
+  --card-bg: #0d1520;
+  --card-border: #1e293b;
+  --card-border-subtle: #111a2e;
+  --nav-bg: rgba(7, 13, 20, 0.95);
+  --nav-border: #1e293b;
+  --neon-blue: #00f0ff;
+  --neon-cyan: #0ea5e9;
+  --cyber-grid-opacity: 0.15;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+
+  --color-cyber-bg: var(--bg-app);
+  --color-cyber-text: var(--text-app);
+  --color-cyber-muted: var(--text-muted);
+  --color-cyber-card: var(--card-bg);
+  --color-cyber-border: var(--card-border);
+  --color-cyber-border-subtle: var(--card-border-subtle);
+  --color-cyber-nav: var(--nav-bg);
+  --color-cyber-nav-border: var(--nav-border);
+  --color-cyber-neon: var(--neon-blue);
+  --color-cyber-neon-cyan: var(--neon-cyan);
+
+  --color-neon-blue: #00f0ff;
+  --color-neon-cyan: #0ea5e9;
+  --color-neon-green: #34d399;
+  --color-cyber-dark: #0a0e0c;
+  --color-cyber-purple: #10b981;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-app);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Scanline screen effect */
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.15;
+  }
+
+  .glow-blue {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+
+  .glow-green {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+  }
+
+  /* Cyberpunk Glitch Animations */
+  @keyframes cyber-glitch-1 {
+    0% {
+      clip-path: inset(40% 0 61% 0);
+      transform: skew(0.3deg);
+    }
+    10% {
+      clip-path: inset(92% 0 1% 0);
+      transform: skew(-0.3deg);
+    }
+    20% {
+      clip-path: inset(25% 0 58% 0);
+      transform: skew(0.5deg);
+    }
+    30% {
+      clip-path: inset(80% 0 5% 0);
+      transform: skew(-0.5deg);
+    }
+    40% {
+      clip-path: inset(11% 0 75% 0);
+      transform: skew(0.3deg);
+    }
+    50% {
+      clip-path: inset(50% 0 30% 0);
+      transform: skew(0);
+    }
+    100% {
+      clip-path: inset(50% 0 30% 0);
+      transform: skew(0);
+    }
+  }
+
+  @keyframes cyber-glitch-2 {
+    0% {
+      clip-path: inset(10% 0 80% 0);
+      transform: skew(-0.2deg);
+    }
+    15% {
+      clip-path: inset(75% 0 10% 0);
+      transform: skew(0.2deg);
+    }
+    30% {
+      clip-path: inset(30% 0 50% 0);
+      transform: skew(-0.4deg);
+    }
+    45% {
+      clip-path: inset(90% 0 2% 0);
+      transform: skew(0.4deg);
+    }
+    60% {
+      clip-path: inset(15% 0 75% 0);
+      transform: skew(0);
+    }
+    100% {
+      clip-path: inset(15% 0 75% 0);
+      transform: skew(0);
+    }
+  }
+
+  /* Subtle border glow shifts for project cards * /
+  @keyframes cyber-card-glow {
+    0%, 100% {
+      border-color: rgba(52, 211, 153, 0.15);
+      background-color: rgba(13, 27, 20, 0.15);
+    }
+    50% {
+      border-color: rgba(14, 165, 233, 0.35);
+      background-color: rgba(10, 30, 40, 0.25);
+    }
+  }
+
+  /* Subtle background glitch shift */
+  @keyframes glitch-bg {
+    0% {
+      transform: translate(0, 0);
+    }
+    2% {
+      transform: translate(1px, -1px);
+    }
+    4% {
+      transform: translate(-1.5px, 1px);
+    }
+    6% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  /* Glitch Text Component */
+  .cyber-glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cyber-glitch-text::before,
+  .cyber-glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .group:hover .cyber-glitch-text {
+    text-shadow: 0.05em 0 0 rgba(0, 240, 255, 0.55), -0.05em -0.025em 0 rgba(16, 185, 129, 0.55);
+  }
+  
+  .group:hover .cyber-glitch-text::before {
+    opacity: 0.8;
+    color: #00f0ff;
+    animation: cyber-glitch-1 2s infinite linear alternate-reverse;
+  }
+  
+  .group:hover .cyber-glitch-text::after {
+    opacity: 0.8;
+    color: #10b981;
+    animation: cyber-glitch-2 2s infinite linear alternate;
+  }
+
+  /* Glitch line indicator */
+  .cyber-glitch-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cyber-glitch-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(52, 211, 153, 0.15),
+      transparent
+    );
+    transition: none;
+  }
+  
+  .group:hover .cyber-glitch-line::after {
+    left: 100%;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* Premium Cyberpunk Typography Spacing and Lettering refinements */
+  .tracking-cyber-wide {
+    letter-spacing: 0.18em;
+  }
+
+  .tracking-cyber-widest {
+    letter-spacing: 0.28em;
+  }
+
+  .font-cyber-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  /* Interactive Cyber Card Jitter & Shadow Glitch */
+  .cyber-card-glitch {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .cyber-card-glitch:hover {
+    animation: glitch-bg 1s steps(4) infinite alternate-reverse;
+    border-color: rgba(0, 240, 255, 0.35) !important;
+    background-color: rgba(10, 20, 25, 0.3) !important;
+    text-shadow: 0 0 1px rgba(0,240,255,0.2);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.1), -3px 0 0 rgba(0, 240, 255, 0.45), 3px 0 0 rgba(52, 211, 153, 0.45);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0e0c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1c2420;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34d399;
+  }
+}
