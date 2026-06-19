@@ -28,6 +28,9 @@ O projeto está dividido em **3 pilares fundamentais de Qualidade de Software (Q
 │       └── production.postman_environment.json # Variáveis globais
 ├── security-qa/
 │   └── bola_tampering_test.json # Testes de vulnerabilidade Newman
+├── src/
+│   └── assets/
+│       └── images/          # Imagens do Portfólio (ex: "josevel alves silva.jpeg")
 └── README.md
 ```
 
