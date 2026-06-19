@@ -217,8 +217,8 @@ npx newman run security-qa/bola_tampering_test.json
 ## 🏆 Habilidades & Ferramentas Demonstradas
 * **Linguagens & Frameworks**: TypeScript, JavaScript, Node.js.
 * **Automação de Testes**: Playwright, POM (Page Object Model), Assertions estruturados.
-* **Inspeção de APIs**: Postman.
-* **Segurança de Software (SecQA)**: OWASP API Security, BOLA Prevent.
+* **Inspeção de APIs**: Postman Collections, Chaining Requests, Dynamic Environments.
+* **Segurança de Software (SecQA)**: OWASP Top 10 API Security, BOLA Prevention, Newman CLI execution.
 * **Boas Práticas de Engenharia**: Testes determinísticos, relatórios automatizados, integração com pipelines CI/CD.
 
 ---

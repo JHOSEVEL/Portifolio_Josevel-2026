@@ -9,7 +9,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onVerCV, onContactClick }: HeroSectionProps) {
   // Use the newly generated professional avatar path
-  const avatarPath = "/src/assets/images/josevel_avatar_new_1781811552737.jpg";
+  const avatarPath = "/src/assets/images/josevel alves silva.jpeg";
 
   return (
     <section id="home" className="py-8 sm:py-12 px-4 max-w-7xl mx-auto">

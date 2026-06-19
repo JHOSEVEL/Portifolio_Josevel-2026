@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { ShieldCheck, Cpu, Terminal } from 'lucide-react';
 
 export default function AboutSection() {
-  const avatarPath = "/src/assets/images/josevel_avatar_new_1781811552737.jpg";
+  const avatarPath = "/src/assets/images/josevel alves silva.jpeg";
 
   return (
     <motion.section 
